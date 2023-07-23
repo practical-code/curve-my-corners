@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 
+#include "Serializer.hpp"
 #include "cxxopts.hpp"
 #include "json.hpp"
 #include "source.hpp"
@@ -140,16 +141,10 @@ int main(const int argc, const char *const *const argv) {
       return 0;
     }
 
-    std::ifstream in(options[Input::code()].as<std::string>(),
-                     std::ios_base::in | std::ios_base::binary);
-    if (!in) {
-      throw std::runtime_error("Could not open input json file");
-    }
-
-    const std::string contents = {std::istreambuf_iterator<char>{in}, {}};
-    const InputData inputData = Json::parse(contents).get<InputData>();
-
-    // printInputData(inputData);
+    Curvy::Serializer reader{options[Input::code()].as<std::string>()};
+    reader.execute();
+    const InputData inputData =
+        Json::parse(reader.getContents()).get<InputData>();
 
     sf::RenderTexture renderTexture;
     renderTexture.create(static_cast<unsigned int>(inputData.width),

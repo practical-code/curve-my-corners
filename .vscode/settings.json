@@ -2,5 +2,8 @@
     "C_Cpp.clang_format_sortIncludes": false,
     "C_Cpp.clang_format_style": "LLVM",
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+        80
+    ]
 }

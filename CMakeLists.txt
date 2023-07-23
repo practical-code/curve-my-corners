@@ -10,7 +10,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(SFML 2.6 REQUIRED COMPONENTS graphics window system)
 
-add_executable(${TARGET} "${PROJECT_SOURCE_DIR}/src/source.cpp")
+add_executable(
+    ${TARGET}
+    "${PROJECT_SOURCE_DIR}/src/FileOpenException.cpp"
+    "${PROJECT_SOURCE_DIR}/src/FileReadException.cpp"
+    "${PROJECT_SOURCE_DIR}/src/Serializer.cpp"
+    "${PROJECT_SOURCE_DIR}/src/source.cpp"
+)
 
 target_include_directories(
     ${TARGET}
