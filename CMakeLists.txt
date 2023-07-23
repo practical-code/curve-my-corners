@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-set(TARGET CURVE_MY_CORNERS)
+set(TARGET curve-my-corners)
 
 project(${TARGET} LANGUAGES CXX VERSION 1)
 
@@ -10,8 +10,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(SFML 2.6 REQUIRED COMPONENTS graphics window system)
 
-set(INCLUDE_PATH "${PROJECT_SOURCE_DIR}/include/")
-set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src/")
+add_executable(${TARGET} "${PROJECT_SOURCE_DIR}/src/source.cpp")
+
+target_include_directories(
+    ${TARGET}
+    PRIVATE
+    "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/third_party/cxxopts/include/"
+    "${PROJECT_SOURCE_DIR}/third_party/json/single_include/nlohmann"
+)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
     target_compile_options(${TARGET} PRIVATE -Wall -Wextra -O3 -pedantic-errors -fmax-errors=1)

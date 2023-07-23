@@ -5,8 +5,8 @@
 #include <stdexcept>
 #include <string>
 
-#include "json.hpp"
 #include "cxxopts.hpp"
+#include "json.hpp"
 #include "source.hpp"
 
 struct CornerData final {
