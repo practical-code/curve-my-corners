@@ -20,32 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// File: Serializer.hpp
-// Purpose: Self-contained file reader class declarations
+// File: Entry.hpp
+// Purpose: Declaration of main
 
-#ifndef INCLUDE_SERIALIZER_HPP
-#define INCLUDE_SERIALIZER_HPP
+#ifndef INCLUDE_ENTRY_HPP
+#define INCLUDE_ENTRY_HPP
 
-#include <filesystem>
-#include <stdexcept>
-#include <string>
-
-namespace Curvy {
-using ReadPath = std::filesystem::path;
-
-class [[nodiscard]] Serializer final {
-public:
-  explicit Serializer(const ReadPath & = {}) noexcept;
-  void setReadPath(const ReadPath &) noexcept;
-  [[nodiscard]] const ReadPath &getReadPath() const noexcept;
-  void execute();
-  [[nodiscard]] const std::string &getContents() const noexcept;
-
-private:
-  ReadPath m_readPath;
-  std::string m_contents;
-};
-} // namespace Curvy
+int main(const int, const char *const *const);
 
 #endif
 

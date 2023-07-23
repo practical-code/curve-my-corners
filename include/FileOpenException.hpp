@@ -41,3 +41,5 @@ private:
 } // namespace Curvy
 
 #endif
+
+// End of file

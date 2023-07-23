@@ -34,3 +34,5 @@ const char *FileOpenException::what() const noexcept {
 }
 
 } // namespace Curvy
+
+// End of flie

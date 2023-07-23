@@ -34,3 +34,5 @@ const char *FileReadException::what() const noexcept {
 }
 
 } // namespace Curvy
+
+// End of file

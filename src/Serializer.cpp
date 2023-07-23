@@ -59,3 +59,5 @@ const std::string &Serializer::getContents() const noexcept {
 }
 
 } // namespace Curvy
+
+// End of file

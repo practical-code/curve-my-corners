@@ -15,7 +15,7 @@ add_executable(
     "${PROJECT_SOURCE_DIR}/src/FileOpenException.cpp"
     "${PROJECT_SOURCE_DIR}/src/FileReadException.cpp"
     "${PROJECT_SOURCE_DIR}/src/Serializer.cpp"
-    "${PROJECT_SOURCE_DIR}/src/source.cpp"
+    "${PROJECT_SOURCE_DIR}/src/Entry.cpp"
 )
 
 target_include_directories(
