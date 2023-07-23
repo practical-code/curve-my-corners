@@ -1,0 +1,6 @@
+[submodule "/home/anon/curve-my-corners/third_party/cxxopts"]
+	path = /home/anon/curve-my-corners/third_party/cxxopts
+	url = git@github.com:jarro2783/cxxopts.git
+[submodule "/home/anon/curve-my-corners/third_party/json"]
+	path = /home/anon/curve-my-corners/third_party/json
+	url = git@github.com:nlohmann/json.git
