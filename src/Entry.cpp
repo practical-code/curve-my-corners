@@ -288,3 +288,5 @@ int main(const int argc, const char *const *const argv) {
     std::cout << "Non-std exception caught in main" << std::endl;
   }
 }
+
+// End of file
