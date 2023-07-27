@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 // File: Entry.cpp
-// Purpose: Definition of main
+// Purpose: Definition of main and includes
 
 #include <SFML/Graphics.hpp>
 #include <fstream>
