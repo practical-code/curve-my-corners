@@ -39,102 +39,26 @@
 #include "cxxopts.hpp"
 #include "json.hpp"
 
-struct CornerData final {
-  float radius;
+using Json = nlohmann::json;
+
+struct Corner final {
+  float radius = {};
   sf::Color color;
+  std::string useTexture;
   std::size_t vertices;
 };
 
-struct InputData final {
-  std::string output;
-  float width;
-  float height;
-  sf::Color color;
-  std::map<std::string, CornerData> corners;
-};
-
-enum class CornerKey { TopLeft, BottomLeft, BottomRight, TopRight };
+void from_json(const Json &json, Corner &corner) {}
 
 struct Input final {
   std::filesystem::path outputFile;
   sf::Vector2f size;
   std::filesystem::path useTexture;
   sf::Color color;
+  std::map<std::string, Corner> corners;
 };
 
-struct Corner final {
-  float radius;
-  sf::Color color;
-  std::string useTexture;
-  std::size_t vertices;
-};
-
-void printInputData(const InputData &inputData) {
-  std::cout << inputData.output << std::endl;
-  std::cout << inputData.width << std::endl;
-  std::cout << inputData.height << std::endl;
-  std::cout << static_cast<unsigned int>(inputData.color.r) << "/"
-            << static_cast<unsigned int>(inputData.color.g) << "/"
-            << static_cast<unsigned int>(inputData.color.b) << "/"
-            << static_cast<unsigned int>(inputData.color.a) << std::endl;
-  for (const auto &corner : inputData.corners) {
-    std::cout << corner.first << std::endl;
-    std::cout << corner.second.radius << std::endl;
-    std::cout << static_cast<unsigned int>(corner.second.color.r) << "/"
-              << static_cast<unsigned int>(corner.second.color.g) << "/"
-              << static_cast<unsigned int>(corner.second.color.b) << "/"
-              << static_cast<unsigned int>(corner.second.color.a) << std::endl;
-    std::cout << corner.second.vertices << std::endl;
-  }
-}
-
-using Json = nlohmann::json;
-
-void from_json(const Json &json, InputData &inputData) {
-  inputData.output = json.at("Output");
-  inputData.width = json.at("Width");
-  inputData.height = json.at("Height");
-  inputData.color.r = json.at("Color").at("R");
-  inputData.color.g = json.at("Color").at("G");
-  inputData.color.b = json.at("Color").at("B");
-  inputData.color.a = json.at("Color").at("A");
-
-  auto &topLeft = inputData.corners["TopLeft"];
-  topLeft.radius = json.at("Corners").at("TopLeft").at("Radius");
-  topLeft.color.r = json.at("Corners").at("TopLeft").at("Color").at("R");
-  topLeft.color.g = json.at("Corners").at("TopLeft").at("Color").at("G");
-  topLeft.color.b = json.at("Corners").at("TopLeft").at("Color").at("B");
-  topLeft.color.a = json.at("Corners").at("TopLeft").at("Color").at("A");
-  topLeft.vertices = json.at("Corners").at("TopLeft").at("Vertices");
-
-  auto &bottomLeft = inputData.corners["BottomLeft"];
-  bottomLeft.radius = json.at("Corners").at("BottomLeft").at("Radius");
-  bottomLeft.color.r = json.at("Corners").at("BottomLeft").at("Color").at("R");
-  bottomLeft.color.g = json.at("Corners").at("BottomLeft").at("Color").at("G");
-  bottomLeft.color.b = json.at("Corners").at("BottomLeft").at("Color").at("B");
-  bottomLeft.color.a = json.at("Corners").at("BottomLeft").at("Color").at("A");
-  bottomLeft.vertices = json.at("Corners").at("BottomLeft").at("Vertices");
-
-  auto &bottomRight = inputData.corners["BottomRight"];
-  bottomRight.radius = json.at("Corners").at("BottomRight").at("Radius");
-  bottomRight.color.r =
-      json.at("Corners").at("BottomRight").at("Color").at("R");
-  bottomRight.color.g =
-      json.at("Corners").at("BottomRight").at("Color").at("G");
-  bottomRight.color.b =
-      json.at("Corners").at("BottomRight").at("Color").at("B");
-  bottomRight.color.a =
-      json.at("Corners").at("BottomRight").at("Color").at("A");
-  bottomRight.vertices = json.at("Corners").at("BottomRight").at("Vertices");
-
-  auto &topRight = inputData.corners["TopRight"];
-  topRight.radius = json.at("Corners").at("TopRight").at("Radius");
-  topRight.color.r = json.at("Corners").at("TopRight").at("Color").at("R");
-  topRight.color.g = json.at("Corners").at("TopRight").at("Color").at("G");
-  topRight.color.b = json.at("Corners").at("TopRight").at("Color").at("B");
-  topRight.color.a = json.at("Corners").at("TopRight").at("Color").at("A");
-  topRight.vertices = json.at("Corners").at("TopRight").at("Vertices");
-}
+void from_json(const Json &json, Input &input) {}
 
 namespace Option {
 
