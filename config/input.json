@@ -1,53 +1,60 @@
 {
-    "Output": "output.png",
-    "Width": 527,
-    "Height": 200,
-    "Color": {
-        "R": 0,
-        "G": 255,
-        "B": 0,
-        "A": 255
-    },
-    "Corners": {
-        "TopLeft": {
-            "Radius": 16,
-            "Color": {
-                "R": 30,
-                "G": 30,
-                "B": 30,
-                "A": 255
-            },
-            "Vertices": 1000
+    "Output": {
+        "FilePath": "curved-corners.png",
+        "Width": 800,
+        "Height": 600,
+        "UseTexture": "",
+        "Color": {
+            "R": 0,
+            "G": 0,
+            "B": 0,
+            "A": 255
         },
-        "BottomLeft": {
-            "Radius": 16,
-            "Color": {
-                "R": 30,
-                "G": 30,
-                "B": 30,
-                "A": 255
+        "Corners": {
+            "TopLeft": {
+                "Radius": 16,
+                "Color": {
+                    "R": 127,
+                    "G": 127,
+                    "B": 127,
+                    "A": 255
+                },
+                "UseTexture": "",
+                "Vertices": 1000
             },
-            "Vertices": 1000
-        },
-        "BottomRight": {
-            "Radius": 16,
-            "Color": {
-                "R": 30,
-                "G": 30,
-                "B": 30,
-                "A": 255
+            "BottomLeft": {
+                "Radius": 16,
+                "Color": {
+                    "R": 127,
+                    "G": 127,
+                    "B": 127,
+                    "A": 255
+                },
+                "UseTexture": "",
+                "Vertices": 1000
             },
-            "Vertices": 1000
-        },
-        "TopRight": {
-            "Radius": 16,
-            "Color": {
-                "R": 30,
-                "G": 30,
-                "B": 30,
-                "A": 255
+            "BottomRight": {
+                "Radius": 16,
+                "Color": {
+                    "R": 127,
+                    "G": 127,
+                    "B": 127,
+                    "A": 255
+                },
+                "UseTexture": "",
+                "Vertices": 1000
             },
-            "Vertices": 1000
+            "TopRight": {
+                "Radius": 16,
+                "Color": {
+                    "R": 127,
+                    "G": 127,
+                    "B": 127,
+                    "A": 255
+                },
+                "UseTexture": "",
+                "Vertices": 1000
+            }
         }
     }
 }
