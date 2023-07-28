@@ -24,6 +24,9 @@
 // Purpose: Definition of main and includes
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -48,6 +51,22 @@ struct InputData final {
   float height;
   sf::Color color;
   std::map<std::string, CornerData> corners;
+};
+
+enum class CornerKey { TopLeft, BottomLeft, BottomRight, TopRight };
+
+struct Input final {
+  std::filesystem::path outputFile;
+  sf::Vector2f size;
+  std::filesystem::path useTexture;
+  sf::Color color;
+};
+
+struct Corner final {
+  float radius;
+  sf::Color color;
+  std::string useTexture;
+  std::size_t vertices;
 };
 
 void printInputData(const InputData &inputData) {
@@ -135,17 +154,17 @@ auto info() { return "prints this message"; }
 auto value() { return cxxopts::value<bool>()->default_value("false"); }
 } // namespace Help
 
-namespace Input {
-auto codes() { return "i,input"; }
+namespace Config {
+auto codes() { return "c,config"; }
 
-auto code() { return "i"; }
+auto code() { return "c"; }
 
-auto info() { return "specify input json file path"; }
+auto info() { return "specify configuration json file path"; }
 
 auto value() {
   return cxxopts::value<std::string>()->default_value("input.json");
 }
-} // namespace Input
+} // namespace Config
 
 } // namespace Option
 
@@ -158,7 +177,7 @@ int main(const int argc, const char *const *const argv) {
     OptionParser optionParser(Program::name(), Program::info());
 
     optionParser.add_options()(Help::codes(), Help::info(), Help::value())(
-        Input::codes(), Input::info(), Input::value());
+        Config::codes(), Config::info(), Config::value());
 
     auto options = optionParser.parse(argc, argv);
 
@@ -167,7 +186,7 @@ int main(const int argc, const char *const *const argv) {
       return 0;
     }
 
-    Curvy::Serializer reader{options[Input::code()].as<std::string>()};
+    Curvy::Serializer reader{options[Config::code()].as<std::string>()};
     reader.execute();
     const InputData inputData =
         Json::parse(reader.getContents()).get<InputData>();

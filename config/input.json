@@ -1,8 +1,10 @@
 {
-    "Output": {
-        "FilePath": "curved-corners.png",
-        "Width": 800,
-        "Height": 600,
+    "Input": {
+        "OutputFile": "curved-corners.png",
+        "Size": {
+            "x": 800,
+            "y": 600
+        },
         "UseTexture": "",
         "Color": {
             "R": 0,
