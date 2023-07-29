@@ -58,7 +58,9 @@ struct Input final {
   std::map<std::string, Corner> corners;
 };
 
-void from_json(const Json &json, Input &input) {}
+void from_json(const Json &json, Input &input) {
+  input.outputFile.assign(json.at("OutputFile"));
+}
 
 namespace Option {
 
